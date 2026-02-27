@@ -1,26 +1,20 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-evory-base: #F9F8F4;
+  --color-evory-dark: #2C2C2C;
+  --color-evory-grey: #8A8A8A;
+  --color-evory-gold: #D4AF37;
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-evory-base);
+  color: var(--color-evory-dark);
+}
+
+/* Menyembunyikan scrollbar bawaan agar Lenis terlihat lebih rapi */
+::-webkit-scrollbar {
+  display: none;
 }
