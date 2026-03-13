@@ -1,97 +1,96 @@
 "use client";
-
+import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
-  const [bg, setBg] = useState("transparent");
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Mencegah scroll saat menu terbuka
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [menuOpen]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    // Sembunyikan navbar saat scroll ke bawah, munculkan saat scroll ke atas
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    // Ubah background menjadi solid jika sudah melewati hero section
-    if (latest > 100) setBg("rgba(249, 248, 244, 0.9)");
-    else setBg("transparent");
+    setIsScrolled(latest > 50);
   });
+
+  const scrollTo = (id: string) => {
+    setMobileMenuOpen(false); 
+    if (id === "top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+    }
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
       <motion.nav
-        variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
-        animate={hidden && !menuOpen ? "hidden" : "visible"}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-sm transition-colors duration-300"
-        style={{ backgroundColor: menuOpen ? "transparent" : bg }}
+        className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+          isScrolled 
+            ? "bg-[#F9F8F4]/80 backdrop-blur-md border-b border-slate-200/50 py-4 shadow-sm" 
+            : "bg-transparent py-6"
+        }`}
       >
-        <Link href="/" onClick={() => setMenuOpen(false)} className="relative z-[60] flex items-center h-10 md:h-14 hover:opacity-70 transition-opacity">
-          <img src="/logo.svg" alt="Evory Logo" className="object-contain h-full w-auto" />
-        </Link>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          
+          {/* LOGO */}
+          <div className="relative w-32 h-10 md:w-40 md:h-12 cursor-pointer z-50" onClick={() => scrollTo("top")}>
+            <Image 
+              src={isScrolled || mobileMenuOpen ? "/logo/logo-blue.png" : "/logo/logo-gold.png"} 
+              alt="Evory" 
+              fill 
+              className="object-contain object-left transition-opacity duration-300" 
+            />
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 font-sans text-[10px] md:text-xs tracking-[0.2em] uppercase text-zinc-800 font-medium relative z-[60]">
-          <Link href="/" className="hover:text-[#D4AF37] transition-colors">Home</Link>
-          <Link href="/about" className="hover:text-[#D4AF37] transition-colors">About Us</Link>
-          <Link href="/works" className="hover:text-[#D4AF37] transition-colors">Works</Link>
+          {/* MENU DESKTOP */}
+          <div className="hidden md:flex gap-8 items-center">
+            <button onClick={() => scrollTo("ecosystem-section")} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${isScrolled ? "text-[#07303F] hover:text-[#E5C185]" : "text-white hover:text-[#E5C185]"}`}>Services</button>
+            <button onClick={() => scrollTo("highlight-section")} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${isScrolled ? "text-[#07303F] hover:text-[#E5C185]" : "text-white hover:text-[#E5C185]"}`}>Portfolio</button>
+            <button onClick={() => scrollTo("testimonials-section")} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${isScrolled ? "text-[#07303F] hover:text-[#E5C185]" : "text-white hover:text-[#E5C185]"}`}>Testimonials</button>
+            <button onClick={() => scrollTo("faq-section")} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${isScrolled ? "text-[#07303F] hover:text-[#E5C185]" : "text-white hover:text-[#E5C185]"}`}>FAQ</button>
+            <a href="https://app.evory.id" target="_blank" rel="noopener noreferrer" className={`border-2 px-6 py-3 text-[10px] font-bold uppercase tracking-widest transition-all ${isScrolled ? "border-[#07303F] text-[#07303F] hover:bg-[#07303F] hover:text-[#F9F8F4]" : "border-[#E5C185] text-[#E5C185] hover:bg-[#E5C185] hover:text-[#07303F]"}`}>
+              Dashboard
+            </a>
+          </div>
+
+          {/* TOMBOL MENU MOBILE */}
+          <button className="md:hidden z-50" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+             {mobileMenuOpen ? <X className="text-[#07303F]" /> : <Menu className={isScrolled ? "text-[#07303F]" : "text-white"} />}
+          </button>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden font-sans text-[10px] tracking-[0.2em] uppercase text-zinc-800 font-bold relative z-[60] p-2 hover:opacity-70 transition-opacity"
-        >
-          {menuOpen ? "CLOSE" : "MENU"}
-        </button>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* LACI NAVIGASI MOBILE */}
       <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[55] bg-[#F9F8F4] flex flex-col items-center justify-center gap-12"
-          >
-            <Link onClick={() => setMenuOpen(false)} href="/" className="font-serif text-5xl italic text-zinc-800 hover:text-[#D4AF37] transition-colors">
-              Home
-            </Link>
-            <Link onClick={() => setMenuOpen(false)} href="/about" className="font-serif text-5xl italic text-zinc-800 hover:text-[#D4AF37] transition-colors">
-              About Us
-            </Link>
-            <Link onClick={() => setMenuOpen(false)} href="/works" className="font-serif text-5xl italic text-zinc-800 hover:text-[#D4AF37] transition-colors">
-              Works
-            </Link>
-
-            <div className="absolute bottom-12 text-center">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400 font-sans mb-4">Connect with Us</p>
-              <div className="flex gap-6 font-sans text-[10px] uppercase tracking-[0.2em] text-zinc-800 mt-2">
-                <a href="#" className="hover:text-[#D4AF37]">Instagram</a>
-                <a href="#" className="hover:text-[#D4AF37]">WhatsApp</a>
-              </div>
-            </div>
-          </motion.div>
+        {mobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-md z-40 md:hidden"
+            />
+            
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 w-[70vw] h-screen bg-[#F9F8F4] z-40 shadow-2xl flex flex-col pt-32 px-8 md:hidden gap-8"
+            >
+              <button onClick={() => scrollTo("highlight-section")} className="text-[#07303F] text-sm font-bold uppercase tracking-widest text-left w-full border-b border-slate-200 pb-4">Portfolio</button>
+              <button onClick={() => scrollTo("ecosystem-section")} className="text-[#07303F] text-sm font-bold uppercase tracking-widest text-left w-full border-b border-slate-200 pb-4">Services</button>
+              <button onClick={() => scrollTo("faq-section")} className="text-[#07303F] text-sm font-bold uppercase tracking-widest text-left w-full border-b border-slate-200 pb-4">FAQ</button>
+              <a href="https://app.evory.id" target="_blank" rel="noopener noreferrer" className="bg-[#07303F] text-[#F9F8F4] text-center font-bold px-6 py-4 text-xs tracking-[0.2em] uppercase mt-4">
+                Dashboard
+              </a>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

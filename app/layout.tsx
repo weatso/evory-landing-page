@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Manrope, Lora } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
-import CustomCursor from "./components/CustomCursor";
 import PageTransition from "./components/PageTransition";
 
 // Konfigurasi Sans-Serif (Manrope)
@@ -37,7 +36,6 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="antialiased font-sans bg-[#F9F8F4] text-zinc-800">
         <SmoothScroll>
-          <CustomCursor />
           <PageTransition>
             {children}
           </PageTransition>
