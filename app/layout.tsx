@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: "Evory | Illuminating Your Best Moments",
   description: "A luxury wedding and digital invitation agency.",
   icons: {
-    icon: "/logo/logo-emblem.svg",
+    icon: "/logo/logo-emblem.png",
   },
 };
 
