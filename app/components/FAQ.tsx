@@ -5,20 +5,36 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
     {
+        question: "Apakah ada batasan jumlah tamu yang bisa saya input ke dalam undangan?",
+        answer: "Anda bisa memasukkan data tamu dalam jumlah yang besar tanpa biaya tambahan.Kami juga menyediakan fitur impor data dari Excel agar Anda tidak perlu mengetik nama tamu satu per satu.",
+    },
+    {
         question: "Berapa lama proses pembuatan undangan digital?",
         answer: "Untuk paket standar, proses memakan waktu 7-10 hari kerja setelah seluruh aset (foto/video/teks) kami terima. Untuk custom design, estimasi 14-21 hari kerja.",
     },
     {
+        question: "Apa bedanya paket Template (Essential/Prestige/Royal) dengan paket Full Custom (The Legacy)?",
+        answer: "Paket Template: Kakak memilih desain cantik yang sudah kami sediakan, proses pengerjaannya sangat cepat yaitu 2-4 hari kerja. Paket Full Custom (The Legacy): Kami mendesain undangan dari nol (from scratch) sesuai dengan moodboard Kakak. Proses ini membutuhkan waktu 1-2 minggu karena melibatkan fase desain eksklusif.",
+    },
+    {
+        question: "Bagaimana cara saya mengetahui siapa saja tamu yang sudah mengisi RSVP?",
+        answer: "Anda akan mendapatkan akses ke Dashboard Khusus untuk memantau kehadiran tamu dan ucapan yang masuk secara real-time. Setiap kali ada tamu yang mengisi RSVP, data tersebut akan langsung ter-update di dashboard sehingga Anda bisa mengatur kapasitas catering dan kursi dengan lebih akurat.",
+    },
+    {
+        question: "Apakah saya bisa menambahkan fitur 'Kirim Kado Digital' (Angpao Online)?",
+        answer: "Sangat bisa. Fitur ini sudah tersedia di seluruh paket undangan digital kami. Anda bisa mencantumkan nomor rekening, link e-wallet, hingga alamat untuk pengiriman kado fisik tanpa ada potongan biaya sepeser pun dari pihak Evory.",
+    },
+    {
         question: "Apakah tamu harus mengunduh aplikasi untuk membuka undangan?",
-        answer: "Tidak. Undangan kami berbasis *web* dan dapat dibuka langsung melalui *browser* di *smartphone* maupun *desktop* tanpa instalasi apapun.",
+        answer: "Tidak. Undangan kami berbasis web dan dapat dibuka langsung melalui browser di smartphone maupun desktop tanpa instalasi apapun.",
     },
     {
-        question: "Apakah bisa request musik latar secara custom?",
-        answer: "Tentu. Anda dapat memberikan file musik original atau kami akan membantu merekomendasikan instrumen yang memiliki lisensi bebas pakai untuk menghindari pemblokiran.",
+        question: "Bagaimana jika ada perubahan jadwal atau lokasi acara mendadak?",
+        answer: "Anda tidak perlu panik karena layanan kami sudah terdapat fasilitas Revisi.Perubahan teks seperti jam, tanggal, atau link lokasi bisa kami kerjakan dengan cepat agar informasi yang diterima tamu selalu akurat.",
     },
     {
-        question: "Sampai kapan link undangan akan aktif?",
-        answer: "Undangan digital akan tetap aktif selama 1 tahun sejak tanggal hari H pernikahan Anda, sebagai arsip digital momen indah Anda.",
+        question: "Berapa lama link undangan saya akan tetap aktif setelah acara selesai?",
+        answer: "Link undangan akan tetap aktif dan dapat diakses selama 6 bulan setelah hari H acara.",
     },
 ];
 

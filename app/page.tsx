@@ -13,10 +13,10 @@ const Manifesto = () => {
   return (
     <section className="py-24 md:py-32 bg-[#F9F8F4] px-6 text-center flex flex-col items-center justify-center">
       <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#E5C185] tracking-[0.4em] uppercase text-xs font-bold mb-6">
-        The Evory Standard
+        Where Timeless Memories Find Their Sanctuary
       </motion.p>
       <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }} viewport={{ once: true }} className="font-sans font-light text-3xl md:text-5xl lg:text-6xl text-[#07303F] max-w-4xl leading-tight">
-        Bukan sekadar dokumentasi dan undangan. Kami membangun <span className="font-bold">gerbang emosional</span> menuju memori abadi Anda.
+        Bukan sekadar dokumentasi atau undangan biasa. Kami mengkurasi setiap momen menjadi sebuah <span className="font-bold">gerbang emosional</span> menuju kenangan abadi Anda. 
       </motion.h2>
     </section>
   );
@@ -70,7 +70,7 @@ const StickyEcosystem = () => {
   const services = [
     { 
       title: "Digital Invitation", 
-      desc: "Platform manajemen tamu cerdas, QR Scanner real-time, dan desain responsif yang mencerminkan kemewahan acara Anda.", 
+      desc: "Lebih dari sekadar undangan, ini adalah gerbang digital yang eksklusif. Menyatukan kemudahan manajemen tamu dengan desain responsif yang mewah, praktis, dan modern bagi setiap undangan Anda.", 
       status: "Available", link: "https://app.evory.id",
       highlights: [
         "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600",
@@ -79,7 +79,7 @@ const StickyEcosystem = () => {
       ]
     },
     { 
-      title: "Physical Invitation", 
+      title: "Digital Guest Book", 
       desc: "Kertas premium, cetak letterpress eksklusif, dan sentuhan foil emas untuk impresi pertama yang tak terlupakan.", 
       status: "Available", link: "https://app.evory.id",
       highlights: [
@@ -90,7 +90,7 @@ const StickyEcosystem = () => {
     },
     { 
       title: "Content Creation", 
-      desc: "Pendekatan visual bergaya editorial dan sinematik. Kami menangkap emosi murni di balik layar hari bahagia Anda.", 
+      desc: "Kami tidak sekadar merekam, kami bercerita. Dengan pendekatan visual editorial dan sinematik, kami menangkap setiap getaran emosi murni di balik layar hari bahagia Anda.", 
       status: "Available", link: "https://app.evory.id",
       highlights: [
         "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600",
@@ -100,7 +100,7 @@ const StickyEcosystem = () => {
     },
     { 
       title: "Wedding Photography", 
-      desc: "Menyatukan cahaya, sudut, dan momen yang tidak bisa diulang menjadi mahakarya visual seumur hidup.", 
+      desc: "Lebih dari sekadar potret, kami menyatukan cahaya dan momen yang tak terulang menjadi sebuah cerita abadi. Setiap sudutnya dirancang untuk menghidupkan kembali memori hari bahagia Anda, selamanya.", 
       status: "Unlocking Soon", link: "#",
       highlights: [
         "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=600",
@@ -109,7 +109,7 @@ const StickyEcosystem = () => {
     },
     { 
       title: "Photobooth Experience", 
-      desc: "Bukan sekadar foto, melainkan studio mini interaktif yang akan menjadi pusat tawa bagi tamu undangan Anda.", 
+      desc: "Hadirkan keceriaan di tengah pesta dengan studio mini interaktif yang seru. Bukan sekadar foto instan, ini adalah ruang bagi tamu Anda untuk menciptakan kenangan manis yang bisa langsung dibawa pulang.", 
       status: "Unlocking Soon", link: "#",
       highlights: [
         "https://images.unsplash.com/photo-1529636798458-92182e662485?q=80&w=600",
